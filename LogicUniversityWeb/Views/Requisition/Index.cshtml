@@ -1,0 +1,105 @@
+﻿@model IEnumerable<LogicUniversityWeb.Models.ViewModel.RequisitionViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<style>
+    a {
+        cursor: pointer;
+    }
+</style>
+
+<h2>Index</h2>
+
+<p>
+    Filter : @Html.ActionLink("All", "GetFilteredRequisition", new { filterReq = "All" }) | @Html.ActionLink("Approved", "GetFilteredRequisition", new { filterReq = "Approved" }) | 
+             @Html.ActionLink("Rejected", "GetFilteredRequisition", new { filterReq = "Rejected" }) | @Html.ActionLink("None", "GetFilteredRequisition", new { filterReq = "None" })
+
+    @*Filter : <a onclick="filterStatus('All')">All</a> | <a onclick="filterStatus('Approved')">Approved</a> | <a onclick="filterStatus('Rejected')">Rejected</a> | <a onclick="filterStatus('None')">None</a>*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RequisitionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.statusOfRequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofSubmission)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequisitionID)
+            </td>
+            <td id=@String.Format("s{0}", @item.RequisitionID)>
+                @Html.DisplayFor(modelItem => item.statusOfRequest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateofSubmission)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.RequisitionID }) |
+                <a onclick="approveFun( @item.RequisitionID,'Approved')">Approved</a> |
+                <a onclick="approveFun( @item.RequisitionID,'Rejected')">Reject</a> |
+                <a onclick="approveFun( @item.RequisitionID,'None')">None</a> 
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@section Scripts{
+
+    <script type="text/javascript">
+
+            var approveFun = function (key, status) {
+            
+                $.ajax({
+                    type: "POST",
+                    url: '/Requisition/ApproveAjax',
+                    data: { 'id': key , 'status' : status },
+
+                    success: function (result) {
+                        //$.notify(result.Message, "success");
+                        //$("#" + 'chk' + key).text("False");
+                        @*location.href = '@url.action("list", "stock")';*@
+
+                        $("#" + 's' + key).text(status);
+                        console.log("success");
+                    },
+                    error: function (result) {
+                        //$.notify(result.Message, 'error');
+                        console.log("error");
+                    }
+                });
+            }
+    </script>
+
+}
