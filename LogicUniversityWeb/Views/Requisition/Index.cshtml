@@ -2,9 +2,10 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+    <script src="~/Scripts/notify.js"></script>
 <style>
     a {
         cursor: pointer;
@@ -87,7 +88,7 @@
                     data: { 'id': key , 'status' : status },
 
                     success: function (result) {
-                        //$.notify(result.Message, "success");
+                        $.notify(result.Message, "success");
                         //$("#" + 'chk' + key).text("False");
                         @*location.href = '@url.action("list", "stock")';*@
 
@@ -95,7 +96,7 @@
                         console.log("success");
                     },
                     error: function (result) {
-                        //$.notify(result.Message, 'error');
+                        $.notify(result.Message, 'error');
                         console.log("error");
                     }
                 });
