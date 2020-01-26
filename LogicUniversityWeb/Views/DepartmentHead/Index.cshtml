@@ -1,0 +1,43 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+@{
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>
+                        Student ID
+                    </td>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        Age
+                    </td>
+                    <td>Gender</td>
+                </tr>
+            </thead>
+            @foreach (DataRow dr in Model.Rows)
+            {
+                <tr>
+                    <td>@dr["DelegationID"].ToString()  </td>
+                    <td>@dr["DeptID"].ToString()  </td>
+                    <td>@dr["StartDate"].ToString()  </td>
+                    <td>@dr["EndDate"].ToString()  </td>
+
+                </tr>
+
+            }
+
+        </table>
+        <br />
+
+    
+}
