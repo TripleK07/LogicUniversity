@@ -51,7 +51,7 @@ namespace LogicUniversityWeb.Services
                                     ,r.[UserID_FK] 
 	                                ,d.[Departmentname]
                                     ,u.[Username]
-                                FROM[ADTeam6].[dbo].[RequisitionList] r
+                                FROM [RequisitionList] r
                                 Inner join Department d on r.DeptID_FK = d.DepartmentID
                                 Inner join Users u on r.UserID_FK = u.UserID ";
 
@@ -87,7 +87,7 @@ namespace LogicUniversityWeb.Services
                     int count = cmd.ExecuteNonQuery();
                     con.Close();
 
-                    if (count > 1)
+                    if (count > 0)
                         return true;
                     else
                         return false;

@@ -1,0 +1,69 @@
+﻿@model LogicUniversityWeb.Models.Departments
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Department Collection</h2>
+
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartmentID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DepartmentID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CollectionPoint, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.CollectionPoint, "Point 1", new { htmlAttributes = new { @class = "form-control" } }) Point 1 <br />
+                @Html.RadioButtonFor(model => model.CollectionPoint, "Point 2", new { htmlAttributes = new { @class = "form-control" } }) Point 2 <br />
+                @Html.RadioButtonFor(model => model.CollectionPoint, "Point 3", new { htmlAttributes = new { @class = "form-control" } }) Point 3 <br />
+                @Html.RadioButtonFor(model => model.CollectionPoint, "Point 4", new { htmlAttributes = new { @class = "form-control" } }) Point 4 <br />
+                @Html.RadioButtonFor(model => model.CollectionPoint, "Point 5", new { htmlAttributes = new { @class = "form-control" } }) Point 5 <br />
+                @Html.RadioButtonFor(model => model.CollectionPoint, "Point 6", new { htmlAttributes = new { @class = "form-control" } }) Point 6 <br />
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <a class="btn btn-default" onclick="updateFun()">Update</a>
+        <a class="btn btn-default">Cancel</a>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script type="text/javascript">
+
+            var updateFun = function () {
+
+                $.ajax({
+                    type: "POST",
+                    url: '/DepartmentStaff/Update',
+                    data: { 'id': @Model.DepartmentID, "point": $('input[name=CollectionPoint]:checked').val() },
+
+                    success: function (result) {
+                        $.notify(result.Message, "success");
+                        
+                        console.log("success");
+                    },
+                    error: function (result) {
+                        $.notify(result.Message, 'error');
+                        console.log("error");
+                    }
+                });
+            }
+    </script>
+
+}

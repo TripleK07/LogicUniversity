@@ -31,35 +31,22 @@ namespace LogicUniversityWeb.Controllers
             return View("Index", req);
         }
 
-
-        //public ActionResult Approve(int id)
-        //{
-        //    reqService.Approve(id, "Approved");
-        //    req = reqService.GetAllRequisition("All");
-        //    return View("Index", req);
-        //}
-
-        //public ActionResult Reject(int id)
-        //{
-        //    reqService.Approve(id, "Rejected");
-        //    req = reqService.GetAllRequisition("All");
-        //    return View("Index", req);
-        //}
-
-        //public ActionResult None(int id)
-        //{
-        //    reqService.Approve(id, "None");
-        //    req = reqService.GetAllRequisition("All");
-        //    return View("Index", req);
-        //}
-
         [HttpPost]
         public JsonResult ApproveAjax(int id, string status)
         {
-            reqService.Approve(id, status);
-            
-            var result  = new { Success = "true", Message = "" + status + " Successfully." };
-            return Json(result, JsonRequestBehavior.AllowGet);
+            try
+            {
+                bool res = reqService.Approve(id, status);
+
+                if (res)
+                    return Json(new { Success = "true", Message = "Updated to " + status + " Successfully." }, JsonRequestBehavior.AllowGet);
+                else
+                    return Json(new { Success = "false", Message = "Updated to " + status + " Failed." }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception)
+            {
+                return Json(new { Success = "false", Message = "Updated to " + status + " Failed." }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }
