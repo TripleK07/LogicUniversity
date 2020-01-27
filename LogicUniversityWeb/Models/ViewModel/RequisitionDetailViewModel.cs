@@ -6,11 +6,7 @@ using System.Web;
 
 namespace LogicUniversityWeb.Models.ViewModel
 {
-    public class RequisitionDetailsWithItem : RequisitionDetails
-    {
-        [DisplayName("Stationery Name")]
-        public String ItemName { get; set; }
-    }
+
 
     public class RequisitionDetailViewModel : RequisitionViewModel
     {

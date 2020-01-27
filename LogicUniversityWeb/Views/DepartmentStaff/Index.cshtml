@@ -9,29 +9,34 @@
 
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <div class="form-group">
-            @Html.LabelFor(model => model.DepartmentID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DepartmentID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-            </div>
+<div class="form-horizontal">
+    <div class="form-group">
+        @Html.LabelFor(model => model.DepartmentID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Departmentname, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CollectionPoint, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.RadioButtonFor(model => model.CollectionPoint, "Point 1", new { htmlAttributes = new { @class = "form-control" } }) Point 1 <br />
-                @Html.RadioButtonFor(model => model.CollectionPoint, "Point 2", new { htmlAttributes = new { @class = "form-control" } }) Point 2 <br />
-                @Html.RadioButtonFor(model => model.CollectionPoint, "Point 3", new { htmlAttributes = new { @class = "form-control" } }) Point 3 <br />
-                @Html.RadioButtonFor(model => model.CollectionPoint, "Point 4", new { htmlAttributes = new { @class = "form-control" } }) Point 4 <br />
-                @Html.RadioButtonFor(model => model.CollectionPoint, "Point 5", new { htmlAttributes = new { @class = "form-control" } }) Point 5 <br />
-                @Html.RadioButtonFor(model => model.CollectionPoint, "Point 6", new { htmlAttributes = new { @class = "form-control" } }) Point 6 <br />
-
-            </div>
-        </div>
-
-
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CollectionPoint, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10" id="currentCollectionPoint">
+            @Model.CollectionPoint
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CollectionPoint, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.RadioButtonFor(model => model.CollectionPoint, "Point 1", new { htmlAttributes = new { @class = "form-control" } }) Point 1 <br />
+            @Html.RadioButtonFor(model => model.CollectionPoint, "Point 2", new { htmlAttributes = new { @class = "form-control" } }) Point 2 <br />
+            @Html.RadioButtonFor(model => model.CollectionPoint, "Point 3", new { htmlAttributes = new { @class = "form-control" } }) Point 3 <br />
+            @Html.RadioButtonFor(model => model.CollectionPoint, "Point 4", new { htmlAttributes = new { @class = "form-control" } }) Point 4 <br />
+            @Html.RadioButtonFor(model => model.CollectionPoint, "Point 5", new { htmlAttributes = new { @class = "form-control" } }) Point 5 <br />
+            @Html.RadioButtonFor(model => model.CollectionPoint, "Point 6", new { htmlAttributes = new { @class = "form-control" } }) Point 6 <br />
+
+        </div>
+    </div>
+</div>
 
 
 
@@ -55,7 +60,8 @@
 
                     success: function (result) {
                         $.notify(result.Message, "success");
-                        
+
+                        $("#currentCollectionPoint").html($('input[name=CollectionPoint]:checked').val())
                         console.log("success");
                     },
                     error: function (result) {

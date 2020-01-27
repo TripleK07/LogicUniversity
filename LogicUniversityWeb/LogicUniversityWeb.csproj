@@ -142,6 +142,7 @@
     <Compile Include="Models\StockCradDetails.cs" />
     <Compile Include="Models\Suppliers.cs" />
     <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\ViewModel\RequisitionDetailsWithItem.cs" />
     <Compile Include="Models\ViewModel\RequisitionDetailViewModel.cs" />
     <Compile Include="Models\ViewModel\RequisitionViewModel.cs" />
     <Compile Include="Models\WishList.cs" />
