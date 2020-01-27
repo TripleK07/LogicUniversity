@@ -21,9 +21,6 @@ namespace LogicUniversityWeb.Controllers
 
             return View(req);
         }
-
-
-
         public ActionResult GetFilteredRequisition(String filterReq)
         {
             req = reqService.GetAllRequisition(filterReq);
@@ -47,6 +44,12 @@ namespace LogicUniversityWeb.Controllers
             {
                 return Json(new { Success = "false", Message = "Updated to " + status + " Failed." }, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        public ActionResult Detail(int id)
+        {
+            RequisitionDetailViewModel model = reqService.GetRequisitionDetail(id);
+            return View(model);
         }
     }
 }

@@ -1,0 +1,92 @@
+﻿@model LogicUniversityWeb.Models.ViewModel.RequisitionDetailViewModel
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>Requisition in Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RequisitionID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequisitionID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statusOfRequest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statusOfRequest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateofSubmission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateofSubmission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+    </dl>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReqDetails[0].ItemID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReqDetails[0].RequisitionQuantity)
+            </th>
+        </tr>
+
+        @foreach (var item in Model.ReqDetails)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequisitionQuantity)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

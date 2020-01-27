@@ -65,7 +65,7 @@
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.RequisitionID }) |
+                @Html.ActionLink("Detail", "Detail", new { id = item.RequisitionID }) |
                 <a onclick="approveFun( @item.RequisitionID,'Approved')">Approved</a> |
                 <a onclick="approveFun( @item.RequisitionID,'Rejected')">Reject</a> |
                 <a onclick="approveFun( @item.RequisitionID,'None')">None</a> 
