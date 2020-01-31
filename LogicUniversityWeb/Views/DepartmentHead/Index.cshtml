@@ -1,6 +1,7 @@
-﻿@using System.Data
-@using System.Data.SqlClient
-@model System.Data.DataTable
+﻿
+@model IEnumerable<LogicUniversityWeb.Models.ViewModel.DelegationViewModel>
+
+
 @{
     ViewBag.Title = "Index";
 }
@@ -9,35 +10,50 @@
 
 
 @{
-        <table border="1">
-            <thead>
-                <tr>
-                    <td>
-                        Student ID
-                    </td>
-                    <td>
-                        Name
-                    </td>
-                    <td>
-                        Age
-                    </td>
-                    <td>Gender</td>
-                </tr>
-            </thead>
-            @foreach (DataRow dr in Model.Rows)
-            {
-                <tr>
-                    <td>@dr["DelegationID"].ToString()  </td>
-                    <td>@dr["DeptID"].ToString()  </td>
-                    <td>@dr["StartDate"].ToString()  </td>
-                    <td>@dr["EndDate"].ToString()  </td>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>
+                    Delegation Id
+                </td>
+                <td>
+                    User Name
+                </td>
+                <td>
+                    Department Name
+                </td>
+                <td>
+                    StartDate
+                </td>
+                <td>
+                    EndDate
+                </td>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DelegationID)
+                </td>
+                <td id=@String.Format("s{0}", @item.DelegationID)>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
 
-                </tr>
+            </tr>
+        }
 
-            }
+    </table>
+    <br />
 
-        </table>
-        <br />
 
-    
 }
