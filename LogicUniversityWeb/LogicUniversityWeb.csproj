@@ -122,7 +122,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DepartmentHeadController.cs" />
     <Compile Include="Controllers\DepartmentStaffController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RequisitionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -142,9 +141,11 @@
     <Compile Include="Models\StockCradDetails.cs" />
     <Compile Include="Models\Suppliers.cs" />
     <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\ViewModel\DelegationViewModel.cs" />
     <Compile Include="Models\ViewModel\RequisitionDetailsWithItem.cs" />
     <Compile Include="Models\ViewModel\RequisitionDetailViewModel.cs" />
     <Compile Include="Models\ViewModel\RequisitionViewModel.cs" />
+    <Compile Include="Models\ViewModel\StaffViewModel.cs" />
     <Compile Include="Models\WishList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DataLink.cs" />
@@ -187,14 +188,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\DepartmentHead\Delegation.cshtml" />
     <Content Include="Views\DepartmentHead\Index.cshtml" />
     <Content Include="Views\Requisition\Index.cshtml" />
     <Content Include="Views\DepartmentStaff\Index.cshtml" />
     <Content Include="Views\Requisition\Detail.cshtml" />
+    <Content Include="Views\DepartmentHead\CurrentRep.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
