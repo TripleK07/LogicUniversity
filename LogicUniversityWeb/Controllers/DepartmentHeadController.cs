@@ -37,7 +37,14 @@ namespace LogicUniversityWeb.Controllers
             return View(model);
         }
 
-       
+        public JsonResult apiCurrentRep()
+        {
+            StaffViewModel model = new StaffViewModel();
+            model.CurrentRep = dh.FindCurrentRepresentative();
+            model.UserList = dh.GetAllDeptStaff("All").AsEnumerable();
+
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         public RedirectToRouteResult Assign(FormCollection form)

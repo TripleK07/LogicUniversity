@@ -21,6 +21,12 @@ namespace LogicUniversityWeb.Controllers
 
             return View(req);
         }
+
+        public JsonResult apiGet()
+        {
+            req = reqService.GetAllRequisition("All");
+            return Json(req , JsonRequestBehavior.AllowGet);
+        }
         public ActionResult GetFilteredRequisition(String filterReq)
         {
             req = reqService.GetAllRequisition(filterReq);
